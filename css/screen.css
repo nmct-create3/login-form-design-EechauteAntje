@@ -20,6 +20,30 @@
 \*------------------------------------*/
 
 :root {
+  --global-color-alpha-light: #4f95ff;
+  --global-color-alpha: #3385ff;
+  --global-color-alpha-dark: #2e77e6;
+  --global-color-transparent: #3385ffbf;
+  --global-color-x-transparent: #3385ff4d;
+  /* grijswaarden */
+  --global-color-neutral-xxxx-light: #f5f6fa;
+  --global-color-neutral-xxx-light: #caccd4;
+  --global-color-neutral-xx-light: #b5b6c0;
+  --global-color-neutral-x-light: #a0a1ad;
+  --global-color-neutral-light: #8b8c9a;
+  --global-color-neutral: #757787;
+  --global-color-neutral-dark: #606274;
+  --global-color-neutral-x-dark: #4b4c60;
+  --global-color-neutral-xx-dark: #35374d;
+  --global-color-neutral-xxx-dark: #20223a;
+  /* whitespace */
+  --global-baseline: 8px;
+  --global-whitespace-xs: calc(var(--global-baseline) / 2); /* = 4px */
+  --global-whitespace-sm: calc(var(--global-whitespace-xs) * 2); /* = 8px */
+  --global-whitespace-md: calc(var(--global-whitespace-sm) * 2); /* = 16px */
+  --global-whitespace: calc(var(--global-baseline) * 3); /* = 24px */
+  --global-whitespace-lg: calc(var(--global-whitespace-md) * 2); /* = 32px */
+  --global-whitespace-xl: calc(var(--global-whitespace) * 2); /* = 48px */
 }
 
 /* CSS variables here */
@@ -38,11 +62,11 @@ html {
   font-size: 16px;
   line-height: 1.5;
   font-family: 'Inter Web', Helvetica, arial, sans-serif;
-  color: #20223a;
+  color: var(--global-color-neutral-xxx-dark);
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f5f6fa;
+  background-color: var(--global-color-neutral-xxxx-light);
 }
 
 *,
@@ -65,7 +89,7 @@ html {
 } */
 
 ::selection {
-  background: #3385ff;
+  background: var(--global-color-alpha);
   color: white;
   text-shadow: none;
 }
@@ -135,7 +159,7 @@ figure {
 
 ul,
 ol {
-  padding-left: 24px;
+  padding-left: var(--global-whitespace);
 }
 
 li ul,
@@ -170,18 +194,18 @@ hr {
 }
 
 a {
-  color: #3385ff;
+  color: var(--global-color-alpha);
   transition: all 0.1s ease-in-out;
 }
 
 a:visited,
 a:active {
-  color: #3385ff;
+  color: var(--global-color-alpha);
 }
 
 a:hover,
 a:focus {
-  color: #2e77e6;
+  color: var(--global-color-alpha-light);
 }
 label,
 input {
@@ -205,24 +229,27 @@ input {
 
 .o-row--login {
   /* stuff here to align the card */
+  min-height: 100vh; /* 100 viewport hight */
+  display: flex;
+  align-items: center;
 }
 
 /* size modifiers */
 
 .o-row--lg {
-  padding-top: 48px;
-  padding-bottom: 24px;
+  padding-top: var(--global-whitespace-xl);
+  padding-bottom: var(--global-whitespace);
 }
 
 .o-row--xl {
   padding-top: 72px;
-  padding-bottom: 48px;
+  padding-bottom: var(--global-whitespace-xl);
 }
 
 @media (min-width: 768px) {
   .o-row {
-    padding-left: 48px;
-    padding-right: 48px;
+    padding-left: var(--global-whitespace-xl);
+    padding-right: var(--global-whitespace-xl);
   }
 }
 
@@ -257,13 +284,13 @@ input {
 }
 
 .o-section + .o-section {
-  padding-top: 24px;
+  padding-top: var(--global-whitespace);
 }
 
 @media (min-width: 768px) {
   .o-section--lg + .o-section--lg,
   .o-section--xl + .o-section--xl {
-    padding-top: 48px;
+    padding-top: var(--global-whitespace-xl);
   }
 }
 
@@ -456,10 +483,10 @@ input {
   display: block;
 }
 .c-logo__path--1 {
-  fill: #20223a;
+  fill: var(--global-color-neutral-xxx-dark);
 }
 .c-logo__path--2 {
-  fill: #3385ff;
+  fill: var(--global-color-alpha);
 }
 .c-logo__path--3 {
   fill: #1b4186;
@@ -473,16 +500,25 @@ input {
 .c-card {
   background-color: white;
   border-radius: 3px;
-  /* box-shadow: ; */
+  /* box-shadow: 2px 0px 4px 0px #000000; */
+  box-shadow: h-offset v-offset blur spread color;
+  box-shadow: 2px 0 4px 0px 5% #000000;
 }
 
 .c-card__body {
   padding: 0px 48px;
 }
 .c-card__footer {
+  padding: 48px 48px 24px 48px;
+  display: flex;
+  justify-content: center;
+  border-top: solid 1px #e2e3e7;
 }
 .c-card__title {
-  padding: 48px;
+  padding: var(--global-whitespace-xl);
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0px;
 }
 
 /*
@@ -528,9 +564,9 @@ input {
 
 .c-input:focus {
   outline: none;
-  border-color: #3385ff;
+  border-color: var(--global-color-alpha);
   box-shadow: h-offset v-offset blur spread color;
-  box-shadow: 0 0 0 3px #3385ff4d;
+  box-shadow: 0 0 0 3px var(--global-color-x-transparent);
 }
 
 /*
@@ -540,6 +576,19 @@ input {
 */
 
 .c-label {
+  /* Een font-size van 14px
+Een line-height van 16px
+Een margin-bottom van 8px
+#606274 als tekst kleur.  */
+  font-size: 14px;
+  line-height: 16px;
+  margin-bottom: var(--global-baseline);
+  color: var(--global-color-neutral-dark);
+}
+
+.c-label--option {
+  margin-bottom: 0;
+  margin-left: var(--global-baseline);
 }
 
 /* If a input is focused within the form-field class change te color of the label */
@@ -557,29 +606,29 @@ input {
   font-size: 16px;
   font-weight: 600;
   border: 1px;
-  border-color: #2e77e6;
+  border-color: var(--global-color-alpha-dark);
   border-radius: 3px;
   color: white;
-  background-color: #3385ff;
+  background-color: var(--global-color-alpha);
   line-height: 24px;
   padding: 12px 0px;
   width: 100%;
 }
 
 .c-button:hover {
-  background-color: #4f95ff;
-  border-color: #2e77e6;
+  background-color: var(--global-color-alpha-light);
+  border-color: var(--global-color-alpha-dark);
 }
 
 .c-button:focus {
   outline: none;
-  border-color: #3385ff;
+  border-color: var(--global-color-alpha);
   box-shadow: h-offset v-offset blur spread color;
-  box-shadow: 0 0 0 3px #3385ff4d;
+  box-shadow: 0 0 0 3px var(--global-color-x-transparent);
 }
 
 .c-button:active {
-  background-color: #2e77e6;
+  background-color: var(--global-color-alpha-dark);
 }
 
 .c-button--block {
@@ -603,6 +652,10 @@ input {
   color: Black;
 }
 
+.u-color-neutral-grey {
+  color: var(--global-color-neutral);
+}
+
 /*
     Utilities: spacing
     ---
@@ -622,7 +675,7 @@ input {
 }
 
 .u-mb-sm {
-  margin-bottom: 8px !important;
+  margin-bottom: var(--global-baseline) !important;
 }
 
 .u-mb-md {
@@ -634,7 +687,7 @@ input {
 }
 
 .u-mb-xl {
-  margin-bottom: 48px !important;
+  margin-bottom: var(--global-whitespace-xl) !important;
 }
 
 /*
