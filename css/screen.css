@@ -44,6 +44,13 @@
   --global-whitespace: calc(var(--global-baseline) * 3); /* = 24px */
   --global-whitespace-lg: calc(var(--global-whitespace-md) * 2); /* = 32px */
   --global-whitespace-xl: calc(var(--global-whitespace) * 2); /* = 48px */
+
+  /* lineheight */
+  --global-lineheight-md: calc(var(--global-baseline)*2); /* = 16px*/
+  --global-lineheight: calc(var(--global-baseline)*3); /* = 24px*/
+  --global-lineheight-lg: calc(var(--global-baseline)*4); /* = 32px*/
+  --global-lineheight-xl: calc(var(--global-baseline)*6); /* = 48px*/
+
 }
 
 /* CSS variables here */
@@ -123,28 +130,28 @@ h3 {
 
 h1 {
   font-size: 36px;
-  line-height: 48px;
-  margin: 0 0 24px;
+  line-height: var(--global-lineheight-lg);
+  margin: 0 0 var(--global-whitespace);
 }
 
 h2 {
   font-size: 32px;
   line-height: 40px;
-  margin: 0 0 24px;
+  margin: 0 0 var(--global-whitespace);
 }
 
 h3 {
   font-size: 26px;
-  line-height: 32px;
-  margin: 0 0 24px;
+  line-height: var(--global-lineheight-lg);
+  margin: 0 0 var(--global-whitespace);
 }
 
 h4,
 h5,
 h6 {
   font-size: 20px;
-  line-height: 24px;
-  margin: 0 0 24px;
+  line-height: var(--global-lineheight);
+  margin: 0 0 var(--global-whitespace);
 }
 
 p,
@@ -154,7 +161,7 @@ dl,
 table,
 address,
 figure {
-  margin: 0 0 24px;
+  margin: 0 0 var(--global-whitespace);
 }
 
 ul,
@@ -170,8 +177,8 @@ li ol {
 blockquote {
   font-style: normal;
   font-size: 23px;
-  line-height: 32px;
-  margin: 0 0 24px;
+  line-height: var(--global-lineheight-lg);
+  margin: 0 0 var(--global-whitespace);
 }
 
 blockquote * {
@@ -182,15 +189,15 @@ blockquote * {
 figcaption {
   font-weight: 400;
   font-size: 12px;
-  line-height: 16px;
-  margin-top: 8px;
+  line-height: var(--global-lineheight-md);
+  margin-top: var(--global-whitespace-sm);
 }
 
 hr {
   border: 0;
   height: 1px;
   background: LightGrey;
-  margin: 0 0 24px;
+  margin: 0 0 var(--global-whitespace);
 }
 
 a {
@@ -224,7 +231,7 @@ input {
 
 .o-row {
   position: relative;
-  padding: 24px 24px 0;
+  padding: var(--global-whitespace) var(--global-whitespace) 0;
 }
 
 .o-row--login {
@@ -342,7 +349,7 @@ input {
 }
 
 .o-layout--gutter-lg > .o-layout__item {
-  padding: 0 24px;
+  padding: 0 var(--global-whitespace);
 }
 
 .o-layout--gutter-xl {
@@ -350,7 +357,7 @@ input {
 }
 
 .o-layout--gutter-xl > .o-layout__item {
-  padding: 0 48px;
+  padding: 0 var(--global-whitespace-xl);
 }
 
 /* reverse horizontal row modifier */
@@ -475,7 +482,7 @@ input {
     Website main logo
 */
 .c-logo {
-  height: 24px;
+  height: var(--global-lineheight);
   display: flex;
 }
 .c-logo__symbol {
@@ -502,14 +509,14 @@ input {
   border-radius: 3px;
   /* box-shadow: 2px 0px 4px 0px #000000; */
   box-shadow: h-offset v-offset blur spread color;
-  box-shadow: 2px 0 4px 0px 5% #000000;
+  box-shadow: 2px 0 var(--global-whitespace-xs) 0px 5% #000000;
 }
 
 .c-card__body {
-  padding: 0px 48px;
+  padding: 0px var(--global-whitespace-xl);
 }
 .c-card__footer {
-  padding: 48px 48px 24px 48px;
+  padding: var(--global-whitespace-xl) var(--global-whitespace-xl) var(--global-whitespace) var(--global-whitespace-xl);
   display: flex;
   justify-content: center;
   border-top: solid 1px #e2e3e7;
@@ -581,7 +588,7 @@ Een line-height van 16px
 Een margin-bottom van 8px
 #606274 als tekst kleur.  */
   font-size: 14px;
-  line-height: 16px;
+  line-height: var(--global-lineheight-md);
   margin-bottom: var(--global-baseline);
   color: var(--global-color-neutral-dark);
 }
@@ -610,7 +617,7 @@ Een margin-bottom van 8px
   border-radius: 3px;
   color: white;
   background-color: var(--global-color-alpha);
-  line-height: 24px;
+  line-height: var(--global-lineheight);
   padding: 12px 0px;
   width: 100%;
 }
@@ -671,7 +678,7 @@ Een margin-bottom van 8px
 }
 
 .u-mb-xs {
-  margin-bottom: 4px !important;
+  margin-bottom: var(--global-whitespace-xs) !important;
 }
 
 .u-mb-sm {
@@ -679,11 +686,11 @@ Een margin-bottom van 8px
 }
 
 .u-mb-md {
-  margin-bottom: 16px !important;
+  margin-bottom: var(--global-whitespace-md) !important;
 }
 
 .u-mb-lg {
-  margin-bottom: 32px !important;
+  margin-bottom: var(--global-whitespace-lg) !important;
 }
 
 .u-mb-xl {
